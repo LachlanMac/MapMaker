@@ -24,9 +24,9 @@ public class BiomeEngine {
 		biomes = new ArrayList<Biome>();
 		forestBiomes = new ArrayList<Biome>();
 
-		forestBiomes.add(new Biome("Temperature Forest", 80, 140, 35, 50, 40, 80, new Color(112, 130, 56), false));
-		forestBiomes.add(new Biome("Rain Forest", 72, 130, 65, 100, 50, 100, new Color(41, 171, 135), false));
-		forestBiomes.add(new Biome("Pine Forest", 80, 130, 40, 100, 10, 25, new Color(63, 122, 77), false));
+		forestBiomes.add(new Biome("Temperature Forest", 80, 140, 35, 70, 40, 70, new Color(112, 130, 56), false));
+		forestBiomes.add(new Biome("Rain Forest", 72, 130, 70, 100, 71, 100, new Color(41, 171, 135), false));
+		forestBiomes.add(new Biome("Pine Forest", 80, 130, 40, 100, 10, 35, new Color(63, 122, 77), false));
 
 		biomes.add(new Biome("Ice Cap", 0, 70, 0, 100, 0, 8, new Color(200, 243, 246), true));
 		biomes.add(new Biome("Deep Ocean", 0, 50, 0, 100, 9, 100, new Color(0, 0, 204), true));

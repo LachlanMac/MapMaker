@@ -46,7 +46,10 @@ public class MapDrawer {
 		System.out.println("...Adjusting Temperatures for Height");
 		dm.adjustTemperatureForHeight();
 
+
+
 		System.out.println("...Setting Initial Image");
+
 		for (int y = 0; y < mapHeight; y++) {
 			for (int x = 0; x < mapWidth; x++) {
 
@@ -54,6 +57,7 @@ public class MapDrawer {
 
 			}
 		}
+
 		System.out.println("...Smoothing first iteration");
 		smoothBiomeMap(dm, image, 1);
 		smoothBiomeMap(dm, image, 2);
@@ -85,6 +89,11 @@ public class MapDrawer {
 		smoothBiomeMap(dm, image, 1);
 		smoothBiomeMap(dm, image, 2);
 		smoothBiomeMap(dm, image, 3);
+		smoothBiomeMap(dm, image, 4);
+		smoothBiomeMap(dm, image, 1);
+		smoothBiomeMap(dm, image, 2);
+		smoothBiomeMap(dm, image, 3);
+
 
 		File HeightMapFile = new File(path);
 		try {
@@ -93,7 +102,7 @@ public class MapDrawer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("...Finished");
 
 	}

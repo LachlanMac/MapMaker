@@ -13,17 +13,17 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		int width = 10;
+		int width = 18;
 		int height = 10;
 		int multiple = 8;
-		int seed = 23432342;
+		int seed = 234235;
 		System.out.println("...Loading Biomes");
 		BiomeEngine.loadBiomes();
 		System.out.println("...Creating Terrain Engine");
-		TerrainEngine terrainEngine = new TerrainEngine(width, height, multiple, 0, 255, 0);
+		TerrainEngine terrainEngine = new TerrainEngine(width, height, multiple, 0, 255, -10);
 		terrainEngine.setSeed(seed);
-		terrainEngine.setMagnitude(45);
-		terrainEngine.setDecay(0.7f);
+		terrainEngine.setMagnitude(40);
+		terrainEngine.setDecay(0.85f);
 
 		terrainEngine.setup();
 		System.out.println("...Generating Terrain");
@@ -43,12 +43,12 @@ public class Main {
 		ForestEngine forestEngine = new ForestEngine(width, height, multiple, 0, 100);
 		forestEngine.setSeed(seed);
 		forestEngine.setMagnitude(20);
-		forestEngine.setDecay(0.70f);
+		forestEngine.setDecay(0.9f);
 
 		forestEngine.setup();
 		System.out.println("...Generating Forests");
 		forestEngine.generate();
-		forestEngine.setForestChance(30);
+		forestEngine.setForestChance(50);
 		forestEngine.setAbsolute();
 
 		TemperatureEngine tempEngine = new TemperatureEngine(width, height, multiple, 0, 10);

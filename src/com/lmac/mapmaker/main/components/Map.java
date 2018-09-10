@@ -17,17 +17,21 @@ public class Map {
 	protected final static int DEFAULT_MAX_CLAMP = 255;
 	private int totalWidth;
 	private int totalHeight;
+	private int widthInChunks, heightInChunks;
 	private boolean oceanEdges = false;
 	private int[][] mapVals;
 	int seed;
 
 	private ArrayList<Chunk> chunkList;
 
-	public Map(int seed, int x, int y, int chunkMultiple, int minClamp, int maxClamp, boolean oceanEdges) {
+	public Map(int seed, int widthInChunks, int heightInChunks, int chunkMultiple, int minClamp, int maxClamp,
+			boolean oceanEdges) {
 		this.seed = seed;
 		this.oceanEdges = oceanEdges;
 		this.chunkMultiple = chunkMultiple;
-		chunks = new Chunk[x][y];
+		this.widthInChunks = widthInChunks;
+		this.heightInChunks = heightInChunks;
+		chunks = new Chunk[widthInChunks][heightInChunks];
 		this.minClamp = minClamp;
 		this.maxClamp = maxClamp;
 		chunkList = new ArrayList<Chunk>();
@@ -36,17 +40,17 @@ public class Map {
 
 		initEmptyChunks();
 
-		currentChunk = chunks[x / 2][y / 2];
+		currentChunk = chunks[widthInChunks / 2][heightInChunks / 2];
 
-		totalWidth = chunkSize * chunks.length;
-		totalHeight = chunkSize * chunks.length;
+		totalWidth = chunkSize * widthInChunks;
+		totalHeight = chunkSize * heightInChunks;
 
 	}
 
 	public void initEmptyChunks() {
 
-		for (int y = 0; y < chunks.length; y++) {
-			for (int x = 0; x < chunks.length; x++) {
+		for (int y = 0; y < heightInChunks; y++) {
+			for (int x = 0; x < widthInChunks; x++) {
 
 				chunks[x][y] = new Chunk(seed, this, new Vector2(x, y), minClamp, maxClamp, oceanEdges);
 				chunkList.add(chunks[x][y]);
@@ -120,7 +124,7 @@ public class Map {
 		int xChunk = chunk.getMapX() + dir.getX();
 		int yChunk = chunk.getMapY() + dir.getY();
 
-		if (yChunk < 0 || xChunk < 0 || xChunk >= chunks.length || yChunk >= chunks.length) {
+		if (yChunk < 0 || xChunk < 0 || xChunk >= widthInChunks || yChunk >= heightInChunks) {
 			return neighbour;
 		} else {
 
@@ -245,9 +249,9 @@ public class Map {
 		float percentHeight = (float) height / (float) this.getHeight();
 		float distanceFromEquator = Math.abs(percentHeight - .50f);
 		float multiplier = distanceFromEquator * 2;
-		
+
 		float newTemp = maxTemp + (-multiplier * 100);
-		return (int)newTemp;
+		return (int) newTemp;
 
 	}
 
