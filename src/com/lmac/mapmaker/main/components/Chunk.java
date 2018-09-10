@@ -52,12 +52,12 @@ public class Chunk {
 			mapVals[0][0] = 5;
 			mapVals[0][chunkSize - 1] = 5;
 		}
-		if (mapLocation.getX() == map.getChunkLength() - 1) {
+		if (mapLocation.getX() == map.getWidthInChunks() - 1) {
 			mapVals[chunkSize - 1][0] = 5;
 			mapVals[chunkSize - 1][chunkSize - 1] = 5;
 		}
 
-		if (mapLocation.getY() == map.getChunkLength() - 1) {
+		if (mapLocation.getY() == map.getHeightInChunks() - 1) {
 			mapVals[chunkSize - 1][chunkSize - 1] = 5;
 			mapVals[0][chunkSize - 1] = 5;
 		}

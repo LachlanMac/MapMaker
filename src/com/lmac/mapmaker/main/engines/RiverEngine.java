@@ -15,6 +15,7 @@ public class RiverEngine {
 	private int minRiverLength = 500;
 	private int maxRiverLength = 5000;
 	private int seed = 0;
+	private boolean thickenRivers = false;
 
 	public RiverEngine() {
 
@@ -39,6 +40,10 @@ public class RiverEngine {
 			}
 
 			if (nextTile.getBiome().getName().equals(BiomeEngine.getBiomeByName("Ice Cap").getName())) {
+				return;
+			}
+
+			if (nextTile.getBiome().getName().equals(BiomeEngine.getBiomeByName("Ocean").getName())) {
 				return;
 			}
 
@@ -71,8 +76,7 @@ public class RiverEngine {
 
 		}
 
-		boolean thickerRivers = true;
-		if (thickerRivers) {
+		if (thickenRivers) {
 
 			for (int y = 5; y < dm.getHeight() - 5; y++) {
 				for (int x = 5; x < dm.getWidth() - 5; x++) {
@@ -123,6 +127,10 @@ public class RiverEngine {
 
 	public void setSeed(int val) {
 		this.seed = val;
+	}
+
+	public void setThickenRivers(boolean val) {
+		this.thickenRivers = val;
 	}
 }
 

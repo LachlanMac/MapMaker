@@ -11,8 +11,8 @@ public class WeatherEngine extends Engine {
 
 	public float deadBandExtreme = -25;
 
-	public WeatherEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp) {
-		super(mapWidth, mapHeight, multiple, minClamp, maxClamp);
+	public WeatherEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp, int offset) {
+		super(mapWidth, mapHeight, multiple, minClamp, maxClamp, offset);
 	}
 
 	@Override

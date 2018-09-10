@@ -14,8 +14,8 @@ public class TerrainEngine extends Engine {
 	private int offset = 0;
 
 	public TerrainEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp, int offset) {
-		super(mapWidth, mapHeight, multiple, minClamp, maxClamp);
-		this.offset = offset;
+		super(mapWidth, mapHeight, multiple, minClamp, maxClamp, offset);
+
 	}
 
 	@Override

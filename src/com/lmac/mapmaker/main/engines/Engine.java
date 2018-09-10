@@ -21,14 +21,15 @@ public abstract class Engine {
 	protected int magnitude, offset, seed, multiple, mapWidth, mapHeight, minClamp, maxClamp;
 	protected float decay;
 
-	public Engine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp) {
+	public Engine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp, int offset) {
 		this.mapWidth = mapWidth;
 		this.mapHeight = mapHeight;
 		this.minClamp = minClamp;
 		this.maxClamp = maxClamp;
 		this.multiple = multiple;
+		this.offset = offset;
 		this.magnitude = DEFAULT_MAGNITUDE;
-		this.offset = DEFAULT_OFFSET;
+
 		this.seed = DEFAULT_SEED;
 		this.decay = DEFAULT_DECAY;
 

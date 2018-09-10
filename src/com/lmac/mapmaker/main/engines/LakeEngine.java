@@ -12,6 +12,7 @@ public class LakeEngine {
 	private int mapHeight, mapWidth;
 	private int smallLakeSize = 100;
 	private int largeLakeSize = 500;
+	private boolean thickenRivers = false;
 	ArrayList<Lake> lakes;
 
 	public LakeEngine() {
@@ -23,7 +24,7 @@ public class LakeEngine {
 		this.mapWidth = map.getWidth();
 		for (int mapY = 0; mapY < mapHeight - lakeSize; mapY += 20) {
 			for (int mapX = 0; mapX < mapWidth - lakeSize; mapX += 20) {
-					
+
 				if (!map.getTileArray()[mapX][mapY].getBiome().isUncheckedWaterTile()) {
 					boolean isLandSquare = true;
 
@@ -101,6 +102,8 @@ public class LakeEngine {
 	public int getLargeLakeSize() {
 		return largeLakeSize;
 	}
+
+	
 
 	public ArrayList<Lake> getLakes() {
 		return lakes;

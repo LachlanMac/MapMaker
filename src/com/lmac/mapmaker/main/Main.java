@@ -8,74 +8,111 @@ import com.lmac.mapmaker.main.engines.RiverEngine;
 import com.lmac.mapmaker.main.engines.TemperatureEngine;
 import com.lmac.mapmaker.main.engines.TerrainEngine;
 import com.lmac.mapmaker.main.engines.WeatherEngine;
+import com.lmac.mapmaker.main.settings.Settings;
 
 public class Main {
 
 	public static void main(String[] args) {
+		BiomeEngine.initBiomes();
+		Settings.loadSettings();
+		generateWorld();
 
-		int width = 18;
-		int height = 10;
-		int multiple = 8;
-		int seed = 234235;
+	}
+
+	public static void generateWorld() {
+		String mapName = Settings.MAP_NAME;
+		int width = Settings.WORLD_WIDTH;
+		int height = Settings.WORLD_HEIGHT;
+		int multiple = Settings.CHUNK_MULTIPLE;
+		int seed = Settings.GLOBAL_SEED;
+
 		System.out.println("...Loading Biomes");
-		BiomeEngine.loadBiomes();
+		//BiomeEngine.loadBiomes();
 		System.out.println("...Creating Terrain Engine");
-		TerrainEngine terrainEngine = new TerrainEngine(width, height, multiple, 0, 255, -10);
-		terrainEngine.setSeed(seed);
-		terrainEngine.setMagnitude(40);
-		terrainEngine.setDecay(0.85f);
+		TerrainEngine terrainEngine = new TerrainEngine(width, height, multiple, Settings.TERRAIN_MIN_CLAMP,
+				Settings.TERRAIN_MAX_CLAMP, Settings.TERRAIN_OFFSET);
+		WeatherEngine weatherEngine = new WeatherEngine(width, height, multiple, Settings.HUMIDITY_MIN_CLAMP,
+				Settings.HUMIDITY_MAX_CLAMP, Settings.HUMIDITY_OFFSET);
+		ForestEngine forestEngine = new ForestEngine(width, height, multiple, 0, 100, 0);
+		TemperatureEngine tempEngine = new TemperatureEngine(width, height, multiple, Settings.TEMPERATURE_MIN_CLAMP,
+				Settings.TEMPERATURE_MAX_CLAMP, Settings.TEMPERATURE_OFFSET);
+		if (seed == 0) {
+			terrainEngine.setSeed(Settings.TERRAIN_SEED);
+			weatherEngine.setSeed(Settings.HUMIDITY_SEED);
+			tempEngine.setSeed(Settings.TEMPERATURE_SEED);
+			forestEngine.setSeed(Settings.FOREST_SEED);
+		} else {
+			terrainEngine.setSeed(seed);
+			weatherEngine.setSeed(seed);
+			tempEngine.setSeed(seed);
+			forestEngine.setSeed(seed);
+		}
 
+		terrainEngine.setMagnitude(Settings.TERRAIN_MAGNITUDE);
+		terrainEngine.setDecay(Settings.TERRAIN_DECAY);
 		terrainEngine.setup();
 		System.out.println("...Generating Terrain");
 		terrainEngine.generate();
 
-		WeatherEngine weatherEngine = new WeatherEngine(width, height, multiple, 30, 100);
-		weatherEngine.setSeed(seed);
-		weatherEngine.setDeadBandExtremes(-17);
-		weatherEngine.setMagnitude(30);
-		weatherEngine.setDecay(0.80f);
+		weatherEngine.setDeadBandExtremes(Settings.DEAD_BAND_EXTREME);
+		weatherEngine.setMagnitude(Settings.HUMIDITY_MAGNITUDE);
+		weatherEngine.setDecay(Settings.HUMIDITY_DECAY);
 
 		weatherEngine.setup();
 		System.out.println("...Generating Global Weather");
 		weatherEngine.generate();
 		weatherEngine.climatize();
 
-		ForestEngine forestEngine = new ForestEngine(width, height, multiple, 0, 100);
-		forestEngine.setSeed(seed);
-		forestEngine.setMagnitude(20);
-		forestEngine.setDecay(0.9f);
+		forestEngine.setMagnitude(Settings.FOREST_MAGNITUDE);
+		forestEngine.setDecay(Settings.FOREST_DECAY);
 
 		forestEngine.setup();
 		System.out.println("...Generating Forests");
 		forestEngine.generate();
-		forestEngine.setForestChance(50);
+		forestEngine.setForestChance(Settings.FOREST_PERCENT);
 		forestEngine.setAbsolute();
 
-		TemperatureEngine tempEngine = new TemperatureEngine(width, height, multiple, 0, 10);
-		tempEngine.setSeed(seed);
 		tempEngine.setup();
 		System.out.println("...Generating Global Temperatures");
 		tempEngine.generate();
-		tempEngine.setTemperatures(0, 100);
+		tempEngine.setTemperatures(Settings.MIN_TEMPERATURE, Settings.MAX_TEMPERATURE);
 
 		MapDrawer drawer = new MapDrawer();
+		if (Settings.SAVE_TERRAIN_MAP == 1) {
+			System.out.println("...Drawing Terrain Height Map");
+			drawer.drawHeightMap(terrainEngine.getMap(), "TerrainMap_" + mapName);
+		}
+		if (Settings.SAVE_HUMIDITY_MAP == 1) {
+			System.out.println("...Drawing Weather Map");
+			drawer.drawHeightMap(weatherEngine.getMap(), "WeatherMap_" + mapName);
+		}
+		if (Settings.SAVE_TEMPERATURE_MAP == 1) {
+			System.out.println("...Drawing Temperature Map");
+			drawer.drawHeightMap(tempEngine.getMap(), "TemperatureMap_" + mapName);
+		}
+		if (Settings.SAVE_FOREST_MAP == 1) {
+			System.out.println("...Drawing Forest Map");
+			drawer.drawHeightMap(forestEngine.getMap(), "ForestMap_" + mapName);
+		}
 
-		System.out.println("...Drawing Terrain Height Map");
-		drawer.drawHeightMap(terrainEngine.getMap(), "TerrainMap");
-		System.out.println("...Drawing Weather Map");
-		drawer.drawHeightMap(weatherEngine.getMap(), "WeatherMap");
-		System.out.println("...Drawing Temperature Map");
-		drawer.drawHeightMap(tempEngine.getMap(), "TemperatureMap");
-		System.out.println("...Drawing Forest Map");
-		drawer.drawHeightMap(forestEngine.getMap(), "ForestMap");
-		
 		LakeEngine lakeEngine = new LakeEngine();
-		
-		RiverEngine riverEngine = new RiverEngine();
-		System.out.println("...Drawing Map");
-		drawer.processMap("BiomeMap", terrainEngine.getMap(), weatherEngine.getMap(), tempEngine.getMap(), forestEngine,
-				lakeEngine, riverEngine);
+		lakeEngine.setLargeLakeSize(Settings.LARGE_LAKE_SIZE);
+		lakeEngine.setSmallLakeSize(Settings.SMALL_LAKE_SIZE);
 
+		RiverEngine riverEngine = new RiverEngine();
+		riverEngine.setSeed(Settings.RIVER_SEED);
+		riverEngine.setMaxRiverLength(Settings.MAX_RIVER_LENGTH);
+		riverEngine.setMinRiverLength(Settings.MIN_RIVER_LENGTH);
+
+		if (Settings.THICKEN_RIVERS == 1) {
+			riverEngine.setThickenRivers(true);
+		} else {
+			riverEngine.setThickenRivers(false);
+		}
+
+		System.out.println("...Drawing Map");
+		drawer.processMap(mapName + "_Map", terrainEngine.getMap(), weatherEngine.getMap(), tempEngine.getMap(),
+				forestEngine, lakeEngine, riverEngine);
 	}
 
 }

@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<settings>
+
+    <world>
+        <width>18</width>
+        <height>10</height>
+        <multiple>8</multiple>
+        <seed>0</seed>
+        <name>Map2</name>
+    </world>
+
+    <terrain>
+        <seed>0</seed>
+        <magnitude>40</magnitude>
+        <decay>0.85</decay>
+        <minClamp>0</minClamp>
+        <maxClamp>255</maxClamp>
+        <offset>0</offset>
+        <saveMap>1</saveMap>
+    </terrain>
+
+    <humidity>
+        <seed>0</seed>
+        <magnitude>20</magnitude>
+        <decay>0.80</decay>
+        <minClamp>20</minClamp>
+        <maxClamp>100</maxClamp>
+        <offset>0</offset>
+        <deadbandExtreme>-20</deadbandExtreme>
+        <deadbandWidth>10</deadbandWidth>
+        <saveMap>1</saveMap>
+    </humidity>
+
+    <temperature>
+        <seed>0</seed>
+        <magnitude>30</magnitude>
+        <decay>0.80</decay>
+        <minClamp>0</minClamp>
+        <maxClamp>10</maxClamp>
+        <minTemperature>0</minTemperature>
+        <maxTemperature>100</maxTemperature>
+        <offset>0</offset>
+        <saveMap>1</saveMap>
+    </temperature>
+
+    <forests>
+        <forestPercent>70</forestPercent>
+        <seed>0</seed>
+        <magnitude>20</magnitude>
+        <decay>0.6</decay>
+        <saveMap>1</saveMap>
+    </forests>
+
+    <lakeandriver>
+
+        <riverSeed>0</riverSeed>
+        <smallLakeSize>100</smallLakeSize>
+        <largeLakeSize>500</largeLakeSize>
+        <minRiverLength>300</minRiverLength>
+        <maxRiverLength>1000</maxRiverLength>
+        <thickenRivers>1</thickenRivers>
+
+    </lakeandriver>
+
+    <processing>
+
+        <smoothingFactor>4</smoothingFactor>
+        <smoothingIterations>2</smoothingIterations>
+
+    </processing>
+
+    <waterbiomes>
+
+        <biome>
+            <name>Ice Cap</name>
+            <minHeight>0</minHeight>
+            <maxHeight>70</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>0</minTemperature>
+            <maxTemperature>8</maxTemperature>
+            <color r="200" g="243" b="246"></color>
+        </biome>
+
+        <biome>
+            <name>Deep Ocean</name>
+            <minHeight>0</minHeight>
+            <maxHeight>50</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>9</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="0" g="0" b="204"></color>
+        </biome>
+
+        <biome>
+            <name>Ocean</name>
+            <minHeight>51</minHeight>
+            <maxHeight>70</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>9</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="0" g="128" b="255"></color>
+        </biome>
+
+    </waterbiomes>
+
+    <landbiomes>
+
+        <biome>
+            <name>Grass</name>
+            <minHeight>71</minHeight>
+            <maxHeight>150</maxHeight>
+            <minHumidity>25</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>21</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="0" g="150" b="0"></color>
+        </biome>
+
+        <biome>
+            <name>Desert</name>
+            <minHeight>71</minHeight>
+            <maxHeight>150</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>24</maxHumidity>
+            <minTemperature>21</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="254" g="255" b="204"></color>
+        </biome>
+
+        <biome>
+            <name>Tundra</name>
+            <minHeight>71</minHeight>
+            <maxHeight>150</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>0</minTemperature>
+            <maxTemperature>20</maxTemperature>
+            <color r="224" g="224" b="224"></color>
+        </biome>
+
+        <biome>
+            <name>"Lower Mountain"</name>
+            <minHeight>151</minHeight>
+            <maxHeight>180</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>0</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="47" g="30" b="9"></color>
+        </biome>
+
+        <biome>
+            <name>"Mountain"</name>
+            <minHeight>181</minHeight>
+            <maxHeight>200</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>0</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="89" g="79" b="58"></color>
+        </biome>
+
+        <biome>
+            <name>"Mountain Top"</name>
+            <minHeight>201</minHeight>
+            <maxHeight>255</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>32</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="89" g="79" b="58"></color>
+        </biome>
+
+        <biome>
+            <name>"Mountain Top (snow)"</name>
+            <minHeight>201</minHeight>
+            <maxHeight>255</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>0</minTemperature>
+            <maxTemperature>31</maxTemperature>
+            <color r="230" g="230" b="230"></color>
+        </biome>
+    </landbiomes>
+
+    <forestbiomes>
+
+        <biome>
+            <name>Temperate Forest</name>
+            <minHeight>80</minHeight>
+            <maxHeight>140</maxHeight>
+            <minHumidity>35</minHumidity>
+            <maxHumidity>70</maxHumidity>
+            <minTemperature>40</minTemperature>
+            <maxTemperature>70</maxTemperature>
+            <color r="112" g="130" b="56"></color>
+        </biome>
+
+        <biome>
+            <name>Rain Forest</name>
+            <minHeight>72</minHeight>
+            <maxHeight>130</maxHeight>
+            <minHumidity>70</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>71</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="41" g="171" b="135"></color>
+        </biome>
+
+        <biome>
+            <name>Pine Forest</name>
+            <minHeight>80</minHeight>
+            <maxHeight>130</maxHeight>
+            <minHumidity>40</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>10</minTemperature>
+            <maxTemperature>35</maxTemperature>
+            <color r="63" g="122" b="77"></color>
+        </biome>
+
+
+
+    </forestbiomes>
+
+
+</settings>

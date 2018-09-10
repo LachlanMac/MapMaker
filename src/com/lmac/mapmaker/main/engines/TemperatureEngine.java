@@ -9,8 +9,8 @@ import com.lmac.mapmaker.main.math.Vector2;
 
 public class TemperatureEngine extends Engine {
 
-	public TemperatureEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp) {
-		super(mapWidth, mapHeight, multiple, minClamp, maxClamp);
+	public TemperatureEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp, int offset) {
+		super(mapWidth, mapHeight, multiple, minClamp, maxClamp, offset);
 
 	}
 

@@ -108,7 +108,7 @@ public class MapDrawer {
 	}
 
 	public void drawHeightMap(Map map, String name) {
-
+		
 		String path = "maps/" + name + ".png";
 		BufferedImage image = new BufferedImage(map.getWidth(), map.getHeight(), BufferedImage.TYPE_INT_RGB);
 

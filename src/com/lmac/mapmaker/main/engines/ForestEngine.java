@@ -15,8 +15,8 @@ public class ForestEngine extends Engine {
 
 	private int chance = 50;
 
-	public ForestEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp) {
-		super(mapWidth, mapHeight, multiple, minClamp, maxClamp);
+	public ForestEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp, int offset) {
+		super(mapWidth, mapHeight, multiple, minClamp, maxClamp, offset);
 
 	}
 

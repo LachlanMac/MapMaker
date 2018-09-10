@@ -300,4 +300,12 @@ public class Map {
 
 	}
 
+	public int getWidthInChunks() {
+		return widthInChunks;
+	}
+
+	public int getHeightInChunks() {
+		return heightInChunks;
+	}
+
 }
