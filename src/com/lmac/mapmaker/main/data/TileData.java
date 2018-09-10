@@ -1,6 +1,7 @@
 package com.lmac.mapmaker.main.data;
 
 import com.lmac.mapmaker.main.biomes.Biome;
+import com.lmac.mapmaker.main.math.Vector2;
 
 public class TileData {
 
@@ -56,7 +57,11 @@ public class TileData {
 
 	public void setToLake() {
 		this.isLake = true;
-		
+
+	}
+
+	public Vector2 getLoc() {
+		return new Vector2(x, y);
 	}
 
 	public void setIsPotentialLake(boolean val) {
@@ -66,4 +71,6 @@ public class TileData {
 	public boolean isPotentialLake() {
 		return this.potentialLake;
 	}
+	
+	
 }

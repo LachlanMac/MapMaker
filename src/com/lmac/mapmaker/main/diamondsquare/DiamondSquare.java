@@ -9,16 +9,16 @@ public class DiamondSquare {
 
 	private ArrayList<SquareStep> squareSteps;
 	private ArrayList<DiamondStep> diamondSteps;
-	private int magnitude, seed, offset, initialMagnitude;
+	private int magnitude, seed, initialMagnitude;
 	private float decay;
 	private Random r;
 	private Chunk currentChunk;
 
-	public DiamondSquare(int seed, int magnitude, float decay, int offset) {
+	public DiamondSquare(int seed, int magnitude, float decay) {
 		this.seed = seed;
 		this.magnitude = magnitude;
 		this.initialMagnitude = magnitude;
-		this.offset = offset;
+		
 		this.decay = decay;
 		r = new Random(seed);
 	}
@@ -67,7 +67,7 @@ public class DiamondSquare {
 		int se = currentChunk.getPoint(x + currentStep, y + currentStep);
 		int sw = currentChunk.getPoint(x, y + currentStep);
 
-		int average = ((nw + ne + se + sw) / 4) + getRandomInt() + offset;
+		int average = ((nw + ne + se + sw) / 4) + getRandomInt();
 
 		currentChunk.setPoint(x + getHalfStep(currentStep), y + getHalfStep(currentStep), average);
 

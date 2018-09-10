@@ -11,10 +11,11 @@ public class TerrainEngine extends Engine {
 
 	private final int DEFAULT_SEA_LEVEL = 73;
 	private int seaLevel = DEFAULT_SEA_LEVEL;
+	private int offset = 0;
 
-	public TerrainEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp) {
+	public TerrainEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp, int offset) {
 		super(mapWidth, mapHeight, multiple, minClamp, maxClamp);
-		// TODO Auto-generated constructor stub
+		this.offset = offset;
 	}
 
 	@Override
@@ -22,9 +23,9 @@ public class TerrainEngine extends Engine {
 		random = new Random(seed);
 		this.map = new Map(seed, mapWidth, mapHeight, multiple, minClamp, maxClamp, true);
 		this.currentChunk = map.getCurrentChunk();
-		ds = new DiamondSquare(seed, magnitude, decay, offset);
-		currentChunk.setCorners(random.nextInt(10) + seaLevel, random.nextInt(10) + seaLevel,
-				random.nextInt(10) + seaLevel, random.nextInt(10) + seaLevel);
+		ds = new DiamondSquare(seed, magnitude, decay);
+		currentChunk.setCorners(random.nextInt(10) + seaLevel + offset, random.nextInt(10) + seaLevel + offset,
+				random.nextInt(10) + seaLevel + offset, random.nextInt(10) + seaLevel + offset);
 	}
 
 	@Override
@@ -114,14 +115,14 @@ public class TerrainEngine extends Engine {
 			}
 
 			if (oceanCounter >= 2) {
-				if (chance < 90) {
-					chunk.setCorners(random.nextInt(seaLevel) + 20, random.nextInt(seaLevel) + 20,
-							random.nextInt(seaLevel) + 20, random.nextInt(seaLevel) + 20);
+				if (chance < 60) {
+					chunk.setCorners(random.nextInt(seaLevel) + 20 + offset, random.nextInt(seaLevel) + 20 + offset,
+							random.nextInt(seaLevel) + 20 + offset, random.nextInt(seaLevel) + 20 + offset);
 					chunk.forceMiddle(random.nextInt(seaLevel) + 20);
 				}
 			}
 
-			chunk.setCorners(randNW, randNE, randSW, randSE);
+			chunk.setCorners(randNW + offset, randNE + offset, randSW + offset, randSE + offset);
 
 			ds.runDiamondSqure(chunk);
 			map.getChunkList().remove(chunk);

@@ -16,10 +16,16 @@ public final class Vector2 {
 		this.y = y;
 	}
 
-
-
 	public Vector2 add(final Vector2 v) {
 		return new Vector2(x + v.x, y + v.y);
+	}
+
+	public float getDistance(Vector2 d) {
+
+		float distance = 0;
+
+		distance = (float) Math.sqrt((Math.pow((d.x - this.x), 2)) + (Math.pow(d.y - this.y, 2)));
+		return Math.abs(distance);
 	}
 
 	public int getX() {
@@ -28,5 +34,9 @@ public final class Vector2 {
 
 	public int getY() {
 		return (int) y;
+	}
+
+	public String toString() {
+		return "V:[" + x + ", " + y + "]";
 	}
 }

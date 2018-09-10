@@ -2,31 +2,83 @@ package com.lmac.mapmaker.main.engines;
 
 import java.util.Random;
 
+import com.lmac.mapmaker.main.biomes.Biome;
+import com.lmac.mapmaker.main.biomes.BiomeEngine;
 import com.lmac.mapmaker.main.components.Chunk;
 import com.lmac.mapmaker.main.components.Map;
+import com.lmac.mapmaker.main.data.DataMap;
+import com.lmac.mapmaker.main.data.TileData;
 import com.lmac.mapmaker.main.diamondsquare.DiamondSquare;
 import com.lmac.mapmaker.main.math.Vector2;
 
-public class TemperatureEngine extends Engine {
+public class ForestEngine extends Engine {
 
-	public TemperatureEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp) {
+	private int chance = 50;
+
+	public ForestEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp) {
 		super(mapWidth, mapHeight, multiple, minClamp, maxClamp);
 
 	}
 
 	@Override
 	public void setup() {
-
 		random = new Random(seed);
-		this.map = new Map(seed, mapWidth, mapHeight, multiple, minClamp, maxClamp, true);
+		this.map = new Map(seed, mapWidth, mapHeight, multiple, minClamp, maxClamp, false);
 		this.currentChunk = map.getCurrentChunk();
 		ds = new DiamondSquare(seed, magnitude, decay);
-		currentChunk.setCorners(random.nextInt(maxClamp) + offset, random.nextInt(maxClamp) + offset,
-				random.nextInt(maxClamp) + offset, random.nextInt(maxClamp) + offset);
+		currentChunk.setCorners(random.nextInt(maxClamp), random.nextInt(maxClamp), random.nextInt(maxClamp),
+				random.nextInt(maxClamp));
+	}
+
+	public void setAbsolute() {
+
+		for (int y = 0; y < map.getHeight(); y++) {
+			for (int x = 0; x < map.getWidth(); x++) {
+
+				if (map.getGlobalValue(x, y) <= chance) {
+
+					map.setGlobalValue(x, y, maxClamp);
+
+				} else {
+					map.setGlobalValue(x, y, minClamp);
+				}
+
+			}
+
+		}
+
+	}
+
+	public void setForestChance(int val) {
+		this.chance = val;
+	}
+
+	public void setForestedBiomes(DataMap dm) {
+
+		for (int y = 0; y < dm.getHeight(); y++) {
+			for (int x = 0; x < dm.getWidth(); x++) {
+
+				if (map.getGlobalValue(x, y) == maxClamp) {
+
+					TileData t = dm.getTile(x, y);
+
+					if (!t.getBiome().isWaterTile()) {
+						Biome b = BiomeEngine.getForestBiome(t.getHeight(), t.getHumidity(), t.getTemperature());
+
+						if (b != null) {
+							dm.getTile(x, y).setBiome(b);
+						}
+					}
+				}
+
+			}
+		}
+
 	}
 
 	@Override
 	public void setSurroundingTiles(Chunk chunk) {
+
 		if (chunk.getDiamondSquared()) {
 			return;
 		}
@@ -77,16 +129,13 @@ public class TemperatureEngine extends Engine {
 			int randNW = random.nextInt(maxClamp);
 			int randSW = random.nextInt(maxClamp);
 
-			chunk.setCorners(randNW + offset, randNE + offset, randSW + offset, randSE + offset);
+			chunk.setCorners(randNW, randNE, randSW, randSE);
 
 			ds.runDiamondSqure(chunk);
 			map.getChunkList().remove(chunk);
 
 		}
-	}
 
-	public void setTemperatures(int minTemp, int maxTemp) {
-		map.setTemperatures(minTemp, maxTemp);
 	}
 
 }

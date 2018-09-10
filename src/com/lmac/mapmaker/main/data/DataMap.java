@@ -1,20 +1,24 @@
 package com.lmac.mapmaker.main.data;
 
+import java.util.ArrayList;
+import java.util.Random;
+
+import com.lmac.mapmaker.main.biomes.Biome;
 import com.lmac.mapmaker.main.biomes.BiomeEngine;
 import com.lmac.mapmaker.main.components.Map;
+import com.lmac.mapmaker.main.engines.RiverEngine;
 
 public class DataMap {
 
-	Map terrainMap, weatherMap, temperatureMap;
+	Map terrainMap, weatherMap, temperatureMap, forestMap;
 	TileData[][] tileDataMap;
 	int mapHeight, mapWidth;
-	BiomeEngine be;
 
-	public DataMap(Map terrainMap, Map weatherMap, Map temperatureMap) {
+	public DataMap(Map terrainMap, Map weatherMap, Map temperatureMap, Map forestMap) {
 		this.mapHeight = terrainMap.getHeight();
 		this.mapWidth = terrainMap.getWidth();
 		tileDataMap = new TileData[mapWidth][mapHeight];
-		be = new BiomeEngine();
+		this.forestMap = forestMap;
 	}
 
 	public TileData getTile(int x, int y) {
@@ -47,56 +51,19 @@ public class DataMap {
 				int temperature = d.getTemperature();
 				int humidity = d.getHumidity();
 				float newTemperature = temperature - ((float) height * tempHeightFactor);
-				// System.out.println("HEIGHT : " + height + " OLD TEMP : " + temperature + "
-				// NEW TEMP : " + (int)f);
-
+			
 				int tempInt = (int) Math.max(newTemperature, 0);
 
 				tileDataMap[x][y].setTemperature(tempInt);
-				tileDataMap[x][y].setBiome(be.getBiome((int) height, humidity, tempInt));
+				tileDataMap[x][y].setBiome(BiomeEngine.getBiome((int) height, humidity, tempInt));
 
 			}
 		}
 
 	}
 
-	public void checkForLakes(int lakeSize) {
-
-		for (int mapY = 0; mapY < mapHeight - lakeSize; mapY++) {
-			for (int mapX = 0; mapX < mapWidth - lakeSize; mapX++) {
-
-				if (tileDataMap[mapX][mapY].getBiome().getName().equals("Ocean")
-						|| tileDataMap[mapX][mapY].getBiome().getName().equals("Deep Ocean")) {
-					tileDataMap[mapX][mapY].setIsPotentialLake(true);
-				}
-
-			}
-		}
-
-		for (int mapY = 0; mapY < mapHeight - lakeSize; mapY += 5) {
-			for (int mapX = 0; mapX < mapWidth - lakeSize; mapX += 5) {
-
-				if (!tileDataMap[mapX][mapY].isPotentialLake()) {
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-				}
-
-			}
-		}
-
+	public TileData[][] getTileArray() {
+		return tileDataMap;
 	}
 
 }

@@ -20,13 +20,13 @@ public class WeatherEngine extends Engine {
 		random = new Random(seed);
 		this.map = new Map(seed, mapWidth, mapHeight, multiple, minClamp, maxClamp, false);
 		this.currentChunk = map.getCurrentChunk();
-		ds = new DiamondSquare(seed, magnitude, decay, offset);
-		currentChunk.setCorners(random.nextInt(maxClamp), random.nextInt(maxClamp), random.nextInt(maxClamp),
-				random.nextInt(maxClamp));
+		ds = new DiamondSquare(seed, magnitude, decay);
+		currentChunk.setCorners(random.nextInt(maxClamp) + offset, random.nextInt(maxClamp) + offset,
+				random.nextInt(maxClamp) + offset, random.nextInt(maxClamp) + offset);
 	}
 
 	public void climatize() {
-		System.out.println("Climatizing");
+
 		map.climatize(deadBandExtreme);
 	}
 
@@ -83,7 +83,7 @@ public class WeatherEngine extends Engine {
 			int randNW = random.nextInt(maxClamp);
 			int randSW = random.nextInt(maxClamp);
 
-			chunk.setCorners(randNW, randNE, randSW, randSE);
+			chunk.setCorners(randNW + offset, randNE + offset, randSW + offset, randSE + offset);
 
 			ds.runDiamondSqure(chunk);
 			map.getChunkList().remove(chunk);
