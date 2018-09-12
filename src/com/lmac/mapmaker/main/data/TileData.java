@@ -1,6 +1,7 @@
 package com.lmac.mapmaker.main.data;
 
 import com.lmac.mapmaker.main.biomes.Biome;
+import com.lmac.mapmaker.main.math.Formatter;
 import com.lmac.mapmaker.main.math.Vector2;
 
 public class TileData {
@@ -9,6 +10,7 @@ public class TileData {
 	Biome b;
 	boolean potentialLake = false;
 	boolean isLake = false;
+	String region = "default";
 
 	public TileData(int x, int y, int height, int humidity, int temperature) {
 		this.temperature = temperature;
@@ -71,6 +73,15 @@ public class TileData {
 	public boolean isPotentialLake() {
 		return this.potentialLake;
 	}
-	
-	
+
+	public String toString() {
+		return "<" + x + "-" + y + "-" + height + "-" + humidity + "-" + temperature + "-" + b.getID();
+	}
+
+	public String encodeData() {
+
+		String data = "<" + Formatter.getHexString(height, humidity, temperature, b.getID());
+		return data;
+	}
+
 }

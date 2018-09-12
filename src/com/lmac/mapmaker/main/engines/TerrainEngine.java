@@ -11,7 +11,6 @@ public class TerrainEngine extends Engine {
 
 	private final int DEFAULT_SEA_LEVEL = 73;
 	private int seaLevel = DEFAULT_SEA_LEVEL;
-	private int offset = 0;
 
 	public TerrainEngine(int mapWidth, int mapHeight, int multiple, int minClamp, int maxClamp, int offset) {
 		super(mapWidth, mapHeight, multiple, minClamp, maxClamp, offset);

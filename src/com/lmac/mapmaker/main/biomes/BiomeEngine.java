@@ -19,52 +19,31 @@ public class BiomeEngine {
 	}
 
 	public static void initBiomes() {
-		defaultBiome = new Biome("Default Biome", 0, 255, 0, 100, 0, 100, Color.black, false);
-		lake = new Biome("Lake", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
-		river = new Biome("River", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
-		riverBank = new Biome("River Bank", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
-		smallLake = new Biome("Small Lake", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
+	
+		biomes = new ArrayList<Biome>();
+		forestBiomes = new ArrayList<Biome>();
+		loadDefaultBiomes();
+	}
+
+	public static void loadDefaultBiomes() {
+		
+		defaultBiome = new Biome(0, "Default Biome", 0, 255, 0, 100, 0, 100, Color.black, false);
+		lake = new Biome(1, "Lake", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
+		river = new Biome(2, "River", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
+		riverBank = new Biome(3, "River Bank", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
+		smallLake = new Biome(4, "Small Lake", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
 
 		lake.setToWaterTile();
 		river.setToWaterTile();
 		riverBank.setToWaterTile();
 		smallLake.setToWaterTile();
-
-		biomes = new ArrayList<Biome>();
-		forestBiomes = new ArrayList<Biome>();
-
-		loadBiomes();
-	}
-
-	public static void loadBiomes() {
-
-		// forestBiomes.add(new Biome("Temperature Forest", 80, 140, 35, 70, 40, 70, new
-		// Color(112, 130, 56), false));
-		// forestBiomes.add(new Biome("Rain Forest", 72, 130, 70, 100, 71, 100, new
-		// Color(41, 171, 135), false));
-		// forestBiomes.add(new Biome("Pine Forest", 80, 130, 40, 100, 10, 35, new
-		// Color(63, 122, 77), false));
-
-		biomes.add(new Biome("Ice Cap", 0, 70, 0, 100, 0, 8, new Color(200, 243, 246), true));
-		biomes.add(new Biome("Deep Ocean", 0, 50, 0, 100, 9, 100, new Color(0, 0, 204), true));
-		biomes.add(new Biome("Ocean", 51, 70, 0, 100, 9, 100, new Color(0, 128, 255), true));
-
-		// biomes.add(new Biome("Tundra", 71, 150, 0, 100, 0, 20, new Color(224, 224,
-		// 224), false));
-		// biomes.add(new Biome("Desert", 71, 150, 0, 24, 21, 100, new Color(254, 255,
-		// 204), false));
-		// biomes.add(new Biome("Grass", 71, 150, 25, 100, 21, 100, new Color(0, 150,
-		// 0), false));
-
-		// biomes.add(new Biome("Lower Mountain", 151, 180, 0, 100, 0, 100, new
-		// Color(47, 30, 9), false));
-		// biomes.add(new Biome("Mountain", 181, 200, 0, 100, 0, 100, new Color(89, 79,
-		// 58), false));
-		// biomes.add(new Biome("Mountain Top", 201, 255, 0, 100, 32, 100, new Color(89,
-		// 79, 58), false));
-		// biomes.add(new Biome("Mountain Top (snow)", 201, 255, 0, 100, 0, 31, new
-		// Color(230, 230, 230), false));
-
+		
+		biomes.add(defaultBiome);
+		biomes.add(lake);
+		biomes.add(river);
+		biomes.add(riverBank);
+		biomes.add(smallLake);
+			
 	}
 
 	public static Biome getBiome(int height, int humidity, int temperature) {

@@ -1,5 +1,22 @@
 package com.lmac.mapmaker.main;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
+import javax.xml.bind.DatatypeConverter;
+
 import com.lmac.mapmaker.main.biomes.BiomeEngine;
 import com.lmac.mapmaker.main.drawer.MapDrawer;
 import com.lmac.mapmaker.main.engines.ForestEngine;
@@ -8,11 +25,15 @@ import com.lmac.mapmaker.main.engines.RiverEngine;
 import com.lmac.mapmaker.main.engines.TemperatureEngine;
 import com.lmac.mapmaker.main.engines.TerrainEngine;
 import com.lmac.mapmaker.main.engines.WeatherEngine;
+import com.lmac.mapmaker.main.math.Formatter;
 import com.lmac.mapmaker.main.settings.Settings;
 
 public class Main {
 
+	// 15712189
+
 	public static void main(String[] args) {
+
 		BiomeEngine.initBiomes();
 		Settings.loadSettings();
 		generateWorld();
@@ -27,7 +48,7 @@ public class Main {
 		int seed = Settings.GLOBAL_SEED;
 
 		System.out.println("...Loading Biomes");
-		//BiomeEngine.loadBiomes();
+		// BiomeEngine.loadBiomes();
 		System.out.println("...Creating Terrain Engine");
 		TerrainEngine terrainEngine = new TerrainEngine(width, height, multiple, Settings.TERRAIN_MIN_CLAMP,
 				Settings.TERRAIN_MAX_CLAMP, Settings.TERRAIN_OFFSET);

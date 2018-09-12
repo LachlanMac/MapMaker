@@ -1,5 +1,9 @@
 package com.lmac.mapmaker.main.data;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -19,6 +23,7 @@ public class DataMap {
 		this.mapWidth = terrainMap.getWidth();
 		tileDataMap = new TileData[mapWidth][mapHeight];
 		this.forestMap = forestMap;
+
 	}
 
 	public TileData getTile(int x, int y) {
@@ -51,7 +56,7 @@ public class DataMap {
 				int temperature = d.getTemperature();
 				int humidity = d.getHumidity();
 				float newTemperature = temperature - ((float) height * tempHeightFactor);
-			
+
 				int tempInt = (int) Math.max(newTemperature, 0);
 
 				tileDataMap[x][y].setTemperature(tempInt);
@@ -64,6 +69,25 @@ public class DataMap {
 
 	public TileData[][] getTileArray() {
 		return tileDataMap;
+	}
+
+	public void exportDataMap(String path) {
+
+		try {
+			BufferedWriter br = new BufferedWriter(new FileWriter(new File(path)));
+			br.write("w=" + mapWidth + "<" + "h=" + mapHeight);
+			for (int y = 0; y < mapHeight; y++) {
+				for (int x = 0; x < mapWidth; x++) {
+					br.write(getTile(x, y).encodeData());
+				}
+			}
+
+			br.close();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
 	}
 
 }

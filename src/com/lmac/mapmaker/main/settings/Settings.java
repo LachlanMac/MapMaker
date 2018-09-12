@@ -111,6 +111,7 @@ public class Settings {
 				TERRAIN_MAX_CLAMP = Integer
 						.parseInt(eElement.getElementsByTagName("maxClamp").item(0).getTextContent());
 				TERRAIN_OFFSET = Integer.parseInt(eElement.getElementsByTagName("offset").item(0).getTextContent());
+
 				SAVE_TERRAIN_MAP = Integer.parseInt(eElement.getElementsByTagName("saveMap").item(0).getTextContent());
 
 			}
@@ -258,6 +259,7 @@ public class Settings {
 							.parseInt(eElement.getElementsByTagName("minTemperature").item(0).getTextContent());
 					int maxTemperature = Integer
 							.parseInt(eElement.getElementsByTagName("maxTemperature").item(0).getTextContent());
+					int id = Integer.parseInt(eElement.getElementsByTagName("id").item(0).getTextContent());
 
 					Node n = (eElement.getElementsByTagName("color").item(0));
 					int r = Integer.parseInt(n.getAttributes().getNamedItem("r").getTextContent());
@@ -265,8 +267,8 @@ public class Settings {
 					int b = Integer.parseInt(n.getAttributes().getNamedItem("b").getTextContent());
 					Color c = new Color(r, g, b);
 
-					Biome biome = new Biome(biomeName, minHeight, maxHeight, minHumidity, maxHumidity, minTemperature,
-							maxTemperature, c, false);
+					Biome biome = new Biome(id, biomeName, minHeight, maxHeight, minHumidity, maxHumidity,
+							minTemperature, maxTemperature, c, false);
 					BiomeEngine.addBiome(biome);
 				}
 
@@ -302,15 +304,15 @@ public class Settings {
 							.parseInt(eElement.getElementsByTagName("minTemperature").item(0).getTextContent());
 					int maxTemperature = Integer
 							.parseInt(eElement.getElementsByTagName("maxTemperature").item(0).getTextContent());
-
+					int id = Integer.parseInt(eElement.getElementsByTagName("id").item(0).getTextContent());
 					Node n = (eElement.getElementsByTagName("color").item(0));
 					int r = Integer.parseInt(n.getAttributes().getNamedItem("r").getTextContent());
 					int g = Integer.parseInt(n.getAttributes().getNamedItem("g").getTextContent());
 					int b = Integer.parseInt(n.getAttributes().getNamedItem("b").getTextContent());
 					Color c = new Color(r, g, b);
 
-					Biome biome = new Biome(biomeName, minHeight, maxHeight, minHumidity, maxHumidity, minTemperature,
-							maxTemperature, c, true);
+					Biome biome = new Biome(id, biomeName, minHeight, maxHeight, minHumidity, maxHumidity,
+							minTemperature, maxTemperature, c, true);
 					BiomeEngine.addBiome(biome);
 				}
 
@@ -346,15 +348,15 @@ public class Settings {
 							.parseInt(eElement.getElementsByTagName("minTemperature").item(0).getTextContent());
 					int maxTemperature = Integer
 							.parseInt(eElement.getElementsByTagName("maxTemperature").item(0).getTextContent());
-
+					int id = Integer.parseInt(eElement.getElementsByTagName("id").item(0).getTextContent());
 					Node n = (eElement.getElementsByTagName("color").item(0));
 					int r = Integer.parseInt(n.getAttributes().getNamedItem("r").getTextContent());
 					int g = Integer.parseInt(n.getAttributes().getNamedItem("g").getTextContent());
 					int b = Integer.parseInt(n.getAttributes().getNamedItem("b").getTextContent());
 					Color c = new Color(r, g, b);
 
-					Biome biome = new Biome(biomeName, minHeight, maxHeight, minHumidity, maxHumidity, minTemperature,
-							maxTemperature, c, false);
+					Biome biome = new Biome(id, biomeName, minHeight, maxHeight, minHumidity, maxHumidity,
+							minTemperature, maxTemperature, c, false);
 					BiomeEngine.addForestBiome(biome);
 				}
 

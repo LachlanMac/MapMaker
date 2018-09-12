@@ -9,9 +9,10 @@ public class Biome {
 	private Color color;
 	private boolean isUncheckedWaterTile = false;
 	private boolean isWaterTile = false;
+	private int id;
 
-	public Biome(String name, int minHeight, int maxHeight, int minHumidity, int maxHumidity, int minTemperature,
-			int maxTemperature, Color color, boolean isUncheckedWaterTile) {
+	public Biome(int id, String name, int minHeight, int maxHeight, int minHumidity, int maxHumidity,
+			int minTemperature, int maxTemperature, Color color, boolean isUncheckedWaterTile) {
 		this.name = name;
 		this.minHeight = minHeight;
 		this.maxHeight = maxHeight;
@@ -21,6 +22,7 @@ public class Biome {
 		this.maxTemperature = maxTemperature;
 		this.color = color;
 		this.isUncheckedWaterTile = isUncheckedWaterTile;
+		this.id = id;
 	}
 
 	public void setToWaterTile() {
@@ -54,7 +56,12 @@ public class Biome {
 		return name;
 	}
 
+	public int getID() {
+		return id;
+	}
+
 	public boolean isUncheckedWaterTile() {
 		return isUncheckedWaterTile;
 	}
+
 }

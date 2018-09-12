@@ -102,6 +102,10 @@ public class MapDrawer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("...Writing DataMap to file");
+		
+		dm.exportDataMap("res/datamap.txt");
 
 		System.out.println("...Finished");
 
