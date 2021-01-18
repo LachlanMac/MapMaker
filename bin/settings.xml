@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<settings>
+
+    <world>
+        <width>16</width>
+        <height>12</height>
+        <multiple>7</multiple>
+        <seed>56</seed>
+        <name>atlah</name>
+    </world>
+
+    <terrain>
+        <seed>444</seed>
+        <magnitude>35</magnitude>
+        <decay>0.85</decay>
+        <minClamp>0</minClamp>
+        <maxClamp>255</maxClamp>
+        <offset>0</offset>
+        <saveMap>0</saveMap>
+    </terrain>
+
+    <humidity>
+        <seed>0</seed>
+        <magnitude>20</magnitude>
+        <decay>0.80</decay>
+        <minClamp>20</minClamp>
+        <maxClamp>100</maxClamp>
+        <offset>10</offset>
+        <deadbandExtreme>-10</deadbandExtreme>
+        <deadbandWidth>10</deadbandWidth>
+        <saveMap>1</saveMap>
+    </humidity>
+
+    <temperature>
+        <seed>34343</seed>
+        <magnitude>30</magnitude>
+        <decay>0.80</decay>
+        <minClamp>0</minClamp>
+        <maxClamp>10</maxClamp>
+        <minTemperature>0</minTemperature>
+        <maxTemperature>100</maxTemperature>
+        <saveMap>1</saveMap>
+    		<offset>0</offset>
+    	</temperature>
+
+    <forests>
+        <forestPercent>50</forestPercent>
+        <magnitude>15</magnitude>
+        <decay>0.6</decay>
+        <saveMap>1</saveMap>
+    		<seed>0</seed>
+    </forests>
+
+    <lakeandriver>
+
+        <riverSeed>0</riverSeed>
+        <smallLakeSize>100</smallLakeSize>
+        <largeLakeSize>500</largeLakeSize>
+        <minRiverLength>300</minRiverLength>
+        <maxRiverLength>5000</maxRiverLength>
+        <thickenRivers>1</thickenRivers>
+
+    </lakeandriver>
+
+    <processing>
+
+        <smoothingFactor>4</smoothingFactor>
+        <smoothingIterations>2</smoothingIterations>
+
+    </processing>
+
+    <waterbiomes>
+
+        <biome>
+            <id>5</id>
+            <name>Ocean</name>
+            <minHeight>51</minHeight>
+            <maxHeight>70</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>9</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="0" g="128" b="255"></color>
+            <plantcover>0</plantcover>
+	    <animalcover>10</animalcover>
+	    <treecover>0</treecover>  
+	    <mineralcover>0</mineralcover>
+	    <livibilityIndex>0.0</livibilityIndex>
+            <adjacencyBonus>15</adjacencyBonus>
+        </biome>
+
+        <biome>
+            <id>6</id>
+            <name>Deep Ocean</name>
+            <minHeight>0</minHeight>
+            <maxHeight>50</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>9</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="0" g="0" b="204"></color>
+            <plantcover>0</plantcover>
+	    <animalcover>8</animalcover>
+        <treecover>0</treecover>
+        <mineralcover>0</mineralcover>
+            <livibilityIndex>0</livibilityIndex>
+            <adjacencyBonus>4.00</adjacencyBonus>
+        </biome>
+
+        <biome>
+            <id>7</id>
+            <name>Ice Cap</name>
+            <minHeight>0</minHeight>
+            <maxHeight>70</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>0</minTemperature>
+            <maxTemperature>8</maxTemperature>
+            <color r="200" g="243" b="246"></color>
+            <plantcover>0</plantcover>
+	    <animalcover>1</animalcover>
+        <treecover>1</treecover>
+        <mineralcover>10</mineralcover>
+	    <livibilityIndex>0.0</livibilityIndex>
+            <adjacencyBonus>1.0</adjacencyBonus>
+        </biome>
+
+    </waterbiomes>
+
+    <landbiomes>
+
+        <biome>
+            <id>101</id>
+            <name>Grass</name>
+            <minHeight>71</minHeight>
+            <maxHeight>150</maxHeight>
+            <minHumidity>25</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>21</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="0" g="150" b="0"></color>
+            <plantcover>60</plantcover>
+	    <animalcover>25</animalcover>
+        <treecover>10</treecover>
+        <mineralcover>10</mineralcover>
+	    <livibilityIndex>10.0</livibilityIndex>
+            <adjacencyBonus>10.0</adjacencyBonus>
+        </biome>
+
+        <biome>
+            <id>102</id>
+            <name>Desert</name>
+            <minHeight>71</minHeight>
+            <maxHeight>150</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>24</maxHumidity>
+            <minTemperature>21</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="254" g="255" b="204"></color>
+            <plantcover>10</plantcover>
+            <animalcover>10</animalcover>
+            <treecover>5</treecover>
+            <mineralcover>15</mineralcover>
+	    <livibilityIndex>4.0</livibilityIndex>
+            <adjacencyBonus>3.0</adjacencyBonus>
+
+        </biome>
+
+        <biome>
+            <id>103</id>
+            <name>Tundra</name>
+            <minHeight>71</minHeight>
+            <maxHeight>150</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>0</minTemperature>
+            <maxTemperature>20</maxTemperature>
+            <color r="224" g="224" b="224"></color>
+            <plantcover>20</plantcover>
+	    <animalcover>10</animalcover>
+        <treecover>5</treecover>
+        <mineralcover>15</mineralcover>
+	    <livibilityIndex>4.0</livibilityIndex>
+            <adjacencyBonus>3.0</adjacencyBonus>
+
+        </biome>
+
+        <biome>
+            <id>104</id>
+            <name>"Lower Mountain"</name>
+            <minHeight>151</minHeight>
+            <maxHeight>180</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>0</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="47" g="30" b="9"></color>
+            <plantcover>20</plantcover>
+            <animalcover>10</animalcover>
+            <treecover>20</treecover>
+            <mineralcover>40</mineralcover>
+            <livibilityIndex>7.0</livibilityIndex>
+            <adjacencyBonus>3.0</adjacencyBonus>
+
+        </biome>
+
+        <biome>
+            <id>105</id>
+            <name>"Mountain"</name>
+            <minHeight>181</minHeight>
+            <maxHeight>200</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>0</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="89" g="79" b="58"></color>
+            <plantcover>10</plantcover>
+	    <animalcover>4</animalcover>
+        <treecover>10</treecover>
+        <mineralcover>40</mineralcover>
+	    <livibilityIndex>5.0</livibilityIndex>
+            <adjacencyBonus>2.0</adjacencyBonus>
+
+        </biome>
+
+        <biome>
+            <id>106</id>
+            <name>"Mountain Top"</name>
+            <minHeight>201</minHeight>
+            <maxHeight>255</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>32</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="89" g="79" b="58"></color>
+            <plantcover>0</plantcover>
+            <animalcover>1</animalcover>
+            <treecover>1</treecover>
+            <mineralcover>30</mineralcover>
+	    <livibilityIndex>2.0</livibilityIndex>
+            <adjacencyBonus>1.0</adjacencyBonus>
+
+        </biome>
+
+        <biome>
+            <id>107</id>
+            <name>"Mountain Top (snow)"</name>
+            <minHeight>201</minHeight>
+            <maxHeight>255</maxHeight>
+            <minHumidity>0</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>0</minTemperature>
+            <maxTemperature>31</maxTemperature>
+            <color r="230" g="230" b="230"></color>
+            <plantcover>0</plantcover>
+            <animalcover>1</animalcover>
+            <treecover>1</treecover>
+            <mineralcover>30</mineralcover>
+	    <livibilityIndex>2.0</livibilityIndex>
+            <adjacencyBonus>1.0</adjacencyBonus>
+        </biome>
+    </landbiomes>
+
+    <forestbiomes>
+
+        <biome>
+            <id>201</id>
+            <name>Temperate Forest</name>
+            <minHeight>80</minHeight>
+            <maxHeight>140</maxHeight>
+            <minHumidity>35</minHumidity>
+            <maxHumidity>70</maxHumidity>
+            <minTemperature>40</minTemperature>
+            <maxTemperature>70</maxTemperature>
+            <color r="112" g="130" b="56"></color>
+            <plantcover>60</plantcover>
+            <animalcover>12</animalcover>
+            <treecover>80</treecover>
+            <mineralcover>10</mineralcover>
+	    <livibilityIndex>8.0</livibilityIndex>
+            <adjacencyBonus>9.0</adjacencyBonus>
+
+        </biome>
+
+        <biome>
+            <id>202</id>
+            <name>Rain Forest</name>
+            <minHeight>72</minHeight>
+            <maxHeight>130</maxHeight>
+            <minHumidity>65</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>60</minTemperature>
+            <maxTemperature>100</maxTemperature>
+            <color r="41" g="171" b="135"></color>
+            <plantcover>60</plantcover>
+            <animalcover>12</animalcover>
+            <treecover>70</treecover>
+            <mineralcover>5</mineralcover>
+            <livibilityIndex>8.0</livibilityIndex>
+            <adjacencyBonus>9.0</adjacencyBonus>
+        </biome>
+
+        <biome>
+            <id>203</id>
+            <name>Pine Forest</name>
+            <minHeight>80</minHeight>
+            <maxHeight>130</maxHeight>
+            <minHumidity>40</minHumidity>
+            <maxHumidity>100</maxHumidity>
+            <minTemperature>10</minTemperature>
+            <maxTemperature>35</maxTemperature>
+            <color r="63" g="122" b="77"></color>
+            <plantcover>50</plantcover>
+            <animalcover>8</animalcover>
+            <treecover>80</treecover>
+            <mineralcover>10</mineralcover>
+            <livibilityIndex>8.0</livibilityIndex>
+            <adjacencyBonus>9.0</adjacencyBonus>
+        </biome>
+    </forestbiomes>
+
+
+</settings>
