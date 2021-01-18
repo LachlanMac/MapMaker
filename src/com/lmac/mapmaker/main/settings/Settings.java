@@ -37,6 +37,7 @@ public class Settings {
 	// forest settings
 	public static int FOREST_SEED, FOREST_MAGNITUDE, FOREST_PERCENT, SAVE_FOREST_MAP;
 	public static float FOREST_DECAY;
+	
 
 	// forest settings
 	public static int RIVER_SEED, SMALL_LAKE_SIZE, LARGE_LAKE_SIZE, MIN_RIVER_LENGTH, MAX_RIVER_LENGTH, THICKEN_RIVERS;
@@ -113,10 +114,8 @@ public class Settings {
 				TERRAIN_OFFSET = Integer.parseInt(eElement.getElementsByTagName("offset").item(0).getTextContent());
 
 				SAVE_TERRAIN_MAP = Integer.parseInt(eElement.getElementsByTagName("saveMap").item(0).getTextContent());
-
 			}
 		}
-
 	}
 
 	public static void loadTemperatureSettings(Document doc) {
@@ -255,10 +254,22 @@ public class Settings {
 							.parseInt(eElement.getElementsByTagName("minHumidity").item(0).getTextContent());
 					int maxHumidity = Integer
 							.parseInt(eElement.getElementsByTagName("maxHumidity").item(0).getTextContent());
+					int plantcover = Integer
+							.parseInt(eElement.getElementsByTagName("plantcover").item(0).getTextContent());
+					int animalcover = Integer
+							.parseInt(eElement.getElementsByTagName("animalcover").item(0).getTextContent());
+					int treecover = Integer
+							.parseInt(eElement.getElementsByTagName("treecover").item(0).getTextContent());
+					int mineralcover = Integer
+							.parseInt(eElement.getElementsByTagName("mineralcover").item(0).getTextContent());
 					int minTemperature = Integer
 							.parseInt(eElement.getElementsByTagName("minTemperature").item(0).getTextContent());
 					int maxTemperature = Integer
 							.parseInt(eElement.getElementsByTagName("maxTemperature").item(0).getTextContent());
+					float livibilityIndex = Float
+							.parseFloat(eElement.getElementsByTagName("livibilityIndex").item(0).getTextContent());
+					float adjacencyBonus = Float
+							.parseFloat(eElement.getElementsByTagName("adjacencyBonus").item(0).getTextContent());
 					int id = Integer.parseInt(eElement.getElementsByTagName("id").item(0).getTextContent());
 
 					Node n = (eElement.getElementsByTagName("color").item(0));
@@ -268,7 +279,7 @@ public class Settings {
 					Color c = new Color(r, g, b);
 
 					Biome biome = new Biome(id, biomeName, minHeight, maxHeight, minHumidity, maxHumidity,
-							minTemperature, maxTemperature, c, false);
+							minTemperature, maxTemperature, c, false, livibilityIndex, adjacencyBonus, plantcover, animalcover, treecover, mineralcover);
 					BiomeEngine.addBiome(biome);
 				}
 
@@ -304,6 +315,18 @@ public class Settings {
 							.parseInt(eElement.getElementsByTagName("minTemperature").item(0).getTextContent());
 					int maxTemperature = Integer
 							.parseInt(eElement.getElementsByTagName("maxTemperature").item(0).getTextContent());
+					int plantcover = Integer
+							.parseInt(eElement.getElementsByTagName("plantcover").item(0).getTextContent());
+					int animalcover = Integer
+							.parseInt(eElement.getElementsByTagName("animalcover").item(0).getTextContent());
+					int treecover = Integer
+							.parseInt(eElement.getElementsByTagName("treecover").item(0).getTextContent());
+					int mineralcover = Integer
+							.parseInt(eElement.getElementsByTagName("mineralcover").item(0).getTextContent());
+					float livibilityIndex = Float
+							.parseFloat(eElement.getElementsByTagName("livibilityIndex").item(0).getTextContent());
+					float adjacencyBonus = Float
+							.parseFloat(eElement.getElementsByTagName("adjacencyBonus").item(0).getTextContent());
 					int id = Integer.parseInt(eElement.getElementsByTagName("id").item(0).getTextContent());
 					Node n = (eElement.getElementsByTagName("color").item(0));
 					int r = Integer.parseInt(n.getAttributes().getNamedItem("r").getTextContent());
@@ -312,7 +335,7 @@ public class Settings {
 					Color c = new Color(r, g, b);
 
 					Biome biome = new Biome(id, biomeName, minHeight, maxHeight, minHumidity, maxHumidity,
-							minTemperature, maxTemperature, c, true);
+							minTemperature, maxTemperature, c, true, livibilityIndex, adjacencyBonus, plantcover, animalcover, treecover, mineralcover);
 					BiomeEngine.addBiome(biome);
 				}
 
@@ -348,6 +371,18 @@ public class Settings {
 							.parseInt(eElement.getElementsByTagName("minTemperature").item(0).getTextContent());
 					int maxTemperature = Integer
 							.parseInt(eElement.getElementsByTagName("maxTemperature").item(0).getTextContent());
+					int plantcover = Integer
+							.parseInt(eElement.getElementsByTagName("plantcover").item(0).getTextContent());
+					int animalcover = Integer
+							.parseInt(eElement.getElementsByTagName("animalcover").item(0).getTextContent());
+					int treecover = Integer
+							.parseInt(eElement.getElementsByTagName("treecover").item(0).getTextContent());
+					int mineralcover = Integer
+							.parseInt(eElement.getElementsByTagName("mineralcover").item(0).getTextContent());
+					float livibilityIndex = Float
+							.parseFloat(eElement.getElementsByTagName("livibilityIndex").item(0).getTextContent());
+					float adjacencyBonus = Float
+							.parseFloat(eElement.getElementsByTagName("adjacencyBonus").item(0).getTextContent());
 					int id = Integer.parseInt(eElement.getElementsByTagName("id").item(0).getTextContent());
 					Node n = (eElement.getElementsByTagName("color").item(0));
 					int r = Integer.parseInt(n.getAttributes().getNamedItem("r").getTextContent());
@@ -356,7 +391,7 @@ public class Settings {
 					Color c = new Color(r, g, b);
 
 					Biome biome = new Biome(id, biomeName, minHeight, maxHeight, minHumidity, maxHumidity,
-							minTemperature, maxTemperature, c, false);
+							minTemperature, maxTemperature, c, false, livibilityIndex, adjacencyBonus, plantcover, animalcover, treecover, mineralcover);
 					BiomeEngine.addForestBiome(biome);
 				}
 

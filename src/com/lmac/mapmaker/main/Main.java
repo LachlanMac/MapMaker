@@ -1,5 +1,6 @@
 package com.lmac.mapmaker.main;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -19,14 +20,18 @@ import javax.xml.bind.DatatypeConverter;
 
 import com.lmac.mapmaker.main.biomes.BiomeEngine;
 import com.lmac.mapmaker.main.drawer.MapDrawer;
+import com.lmac.mapmaker.main.engines.CivilizationEngine;
 import com.lmac.mapmaker.main.engines.ForestEngine;
 import com.lmac.mapmaker.main.engines.LakeEngine;
+import com.lmac.mapmaker.main.engines.RaceEngine;
 import com.lmac.mapmaker.main.engines.RiverEngine;
 import com.lmac.mapmaker.main.engines.TemperatureEngine;
 import com.lmac.mapmaker.main.engines.TerrainEngine;
+import com.lmac.mapmaker.main.engines.TileStatEngine;
 import com.lmac.mapmaker.main.engines.WeatherEngine;
 import com.lmac.mapmaker.main.math.Formatter;
 import com.lmac.mapmaker.main.settings.Settings;
+import com.lmac.mapmaker.races.Race;
 
 public class Main {
 
@@ -131,9 +136,27 @@ public class Main {
 			riverEngine.setThickenRivers(false);
 		}
 
+		Race r1 = new Race("Blob", 3, Color.CYAN);
+		r1.setIdealHumidity(50);
+		r1.setIdealTemperature(50);
+		r1.setPreferredBiome(BiomeEngine.getBiomeByName("Mountain"));
+		
+		Race r2 = new Race("Blerb", 4, Color.PINK);
+		r2.setIdealHumidity(20);
+		r2.setIdealTemperature(70);
+		r2.setPreferredBiome(BiomeEngine.getBiomeByName("Desert"));
+		
+		RaceEngine raceEngine = new RaceEngine();
+		raceEngine.addRace(r1);
+		raceEngine.addRace(r2);
+
+		CivilizationEngine civEngine = new CivilizationEngine();
+
+		TileStatEngine statEngine = new TileStatEngine();
+
 		System.out.println("...Drawing Map");
 		drawer.processMap(mapName + "_Map", terrainEngine.getMap(), weatherEngine.getMap(), tempEngine.getMap(),
-				forestEngine, lakeEngine, riverEngine);
+				forestEngine, lakeEngine, riverEngine, statEngine, civEngine, raceEngine);
 	}
 
 }

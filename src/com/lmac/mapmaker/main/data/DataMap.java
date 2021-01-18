@@ -23,7 +23,6 @@ public class DataMap {
 		this.mapWidth = terrainMap.getWidth();
 		tileDataMap = new TileData[mapWidth][mapHeight];
 		this.forestMap = forestMap;
-
 	}
 
 	public TileData getTile(int x, int y) {
@@ -34,7 +33,6 @@ public class DataMap {
 
 		tileDataMap[tile.getX()][tile.getY()] = tile;
 	}
-
 	public int getHeight() {
 		return mapHeight;
 	}

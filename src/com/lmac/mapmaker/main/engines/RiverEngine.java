@@ -38,7 +38,9 @@ public class RiverEngine {
 			if (nextTile.getBiome().getName().equals(BiomeEngine.getBiomeByName("Mountain").getName())) {
 				return;
 			}
-
+			if (nextTile.getBiome().getName().equals(BiomeEngine.getBiomeByName("Lower Mountain").getName())) {
+				return;
+			}
 			if (nextTile.getBiome().getName().equals(BiomeEngine.getBiomeByName("Ice Cap").getName())) {
 				return;
 			}

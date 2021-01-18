@@ -27,11 +27,11 @@ public class BiomeEngine {
 
 	public static void loadDefaultBiomes() {
 		
-		defaultBiome = new Biome(0, "Default Biome", 0, 255, 0, 100, 0, 100, Color.black, false);
-		lake = new Biome(1, "Lake", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
-		river = new Biome(2, "River", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
-		riverBank = new Biome(3, "River Bank", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
-		smallLake = new Biome(4, "Small Lake", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false);
+		defaultBiome = new Biome(0, "Default Biome", 0, 255, 0, 100, 0, 100, Color.black, false, 0f, 0f, 0, 0, 0, 0);
+		lake = new Biome(1, "Lake", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false, 0f, 30f, 0, 50, 0, 0);
+		river = new Biome(2, "River", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false, 0f, 40f, 0, 40, 0, 0);
+		riverBank = new Biome(3, "River Bank", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false, 0f, 40f, 0, 25,0,0);
+		smallLake = new Biome(4, "Small Lake", 0, 0, 0, 0, 0, 0, new Color(0, 128, 255), false, 0f, 40f, 0, 30,0,0);
 
 		lake.setToWaterTile();
 		river.setToWaterTile();

@@ -10,9 +10,13 @@ public class Biome {
 	private boolean isUncheckedWaterTile = false;
 	private boolean isWaterTile = false;
 	private int id;
+	private int plantCover, animalCover, treeCover, mineralCover;
+
+	private float livibilityIndex, adjacencyIndex;
 
 	public Biome(int id, String name, int minHeight, int maxHeight, int minHumidity, int maxHumidity,
-			int minTemperature, int maxTemperature, Color color, boolean isUncheckedWaterTile) {
+			int minTemperature, int maxTemperature, Color color, boolean isUncheckedWaterTile, float livibilityIndex,
+			float adjacencyIndex, int plantCover, int animalCover, int treeCover, int mineralCover) {
 		this.name = name;
 		this.minHeight = minHeight;
 		this.maxHeight = maxHeight;
@@ -23,6 +27,12 @@ public class Biome {
 		this.color = color;
 		this.isUncheckedWaterTile = isUncheckedWaterTile;
 		this.id = id;
+		this.livibilityIndex = livibilityIndex;
+		this.adjacencyIndex = adjacencyIndex;
+		this.plantCover = plantCover;
+		this.animalCover = animalCover;
+		this.treeCover = treeCover;
+		this.mineralCover = mineralCover;
 	}
 
 	public void setToWaterTile() {
@@ -62,6 +72,30 @@ public class Biome {
 
 	public boolean isUncheckedWaterTile() {
 		return isUncheckedWaterTile;
+	}
+
+	public float getAdjacencyIndex() {
+		return adjacencyIndex;
+	}
+
+	public float getLivibilityIndex() {
+		return livibilityIndex;
+	}
+
+	public int getPlantCover() {
+		return plantCover;
+	}
+
+	public int getAnimalCover() {
+		return animalCover;
+	}
+
+	public int getTreeCover() {
+		return treeCover;
+	}
+
+	public int getMineralCover() {
+		return mineralCover;
 	}
 
 }

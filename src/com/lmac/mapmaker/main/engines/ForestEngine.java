@@ -59,7 +59,7 @@ public class ForestEngine extends Engine {
 			for (int x = 0; x < dm.getWidth(); x++) {
 
 				if (map.getGlobalValue(x, y) == maxClamp) {
-
+					
 					TileData t = dm.getTile(x, y);
 
 					if (!t.getBiome().isWaterTile()) {

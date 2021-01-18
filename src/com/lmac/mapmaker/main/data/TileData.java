@@ -12,6 +12,10 @@ public class TileData {
 	boolean isLake = false;
 	String region = "default";
 
+	private int food = 0, minerals = 0, trees = 0;
+
+	private float livibilityValue;
+
 	public TileData(int x, int y, int height, int humidity, int temperature) {
 		this.temperature = temperature;
 		this.humidity = humidity;
@@ -82,6 +86,38 @@ public class TileData {
 
 		String data = "<" + Formatter.getHexString(height, humidity, temperature, b.getID());
 		return data;
+	}
+
+	public void setLivibilityValue(float f) {
+		this.livibilityValue = f;
+	}
+
+	public float getLivibilityValue() {
+		return this.livibilityValue;
+	}
+
+	public void setFood(int food) {
+		this.food = food;
+	}
+
+	public int getFood() {
+		return food;
+	}
+
+	public void setMinerals(int minerals) {
+		this.minerals = minerals;
+	}
+
+	public int getMinerals() {
+		return minerals;
+	}
+
+	public void setTrees(int trees) {
+		this.trees = trees;
+	}
+
+	public int getTrees() {
+		return trees;
 	}
 
 }
